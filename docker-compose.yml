@@ -1,0 +1,27 @@
+name: loola
+services:
+  app:
+    build:
+      context: .
+    depends_on:
+      - db
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "9005:9005"
+    command: php -S 0.0.0.0:9005 -t public/
+
+  db:
+    image: mariadb:11
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: password
+      MARIADB_DATABASE: app
+    ports:
+      - "3306:3306"
+
+volumes:
+  db:
+    driver: local
