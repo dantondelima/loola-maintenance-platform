@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
+declare(strict_types=1);
+
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+Route::post('users', [UserController::class, 'store'])->name('users.store');
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/user', fn (Request $request) => $request->user());
-});
