@@ -13,6 +13,14 @@ use Illuminate\Http\Request;
 
 final class UserController extends BaseController
 {
+    /**
+     * Creates a new user with the provided data and returns a JSON response.
+     *
+     * On success, returns the created user resource with HTTP status 201. If an error occurs during user creation, returns a generic error response.
+     *
+     * @param UserStoreDto $data Data for creating the user.
+     * @return JsonResponse JSON response containing the created user or an error message.
+     */
     public function store(UserStoreDto $data, CreateUserService $service): JsonResponse
     {
         try {

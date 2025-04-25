@@ -14,6 +14,11 @@ final class UserFactory extends Factory
 {
     protected static ?string $password;
 
+    /**
+     * Generates a default set of attributes for a user model, including name, email, hashed password, role, and status.
+     *
+     * @return array Associative array of user attributes suitable for model creation or seeding.
+     */
     public function definition(): array
     {
         $role = fake()->randomElement(UserRoleEnum::cases());
@@ -29,6 +34,13 @@ final class UserFactory extends Factory
         ];
     }
 
+    /**
+     * Sets the user factory state to indicate an unverified email address.
+     *
+     * Returns a factory instance where the generated user's `email_verified_at` attribute is null.
+     *
+     * @return static Modified factory with unverified email state.
+     */
     public function unverified(): static
     {
         return $this->state(fn (array $attributes) => [

@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Creates the 'personal_access_tokens' table for storing API tokens with polymorphic relations, abilities, and usage metadata.
+     *
+     * Defines columns for token identification, association to various models, token value, abilities, usage timestamps, and standard Laravel timestamps.
      */
     public function up(): void
     {
@@ -26,7 +28,7 @@ return new class extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Drops the personal_access_tokens table, reversing the migration.
      */
     public function down(): void
     {

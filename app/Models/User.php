@@ -30,6 +30,11 @@ final class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
+    /**
+     * Returns the attribute casting rules for the User model.
+     *
+     * @return array Attribute cast definitions for email verification, password, role, and status.
+     */
     protected function casts(): array
     {
         return [
