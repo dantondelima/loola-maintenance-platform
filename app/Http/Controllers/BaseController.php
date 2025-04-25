@@ -11,7 +11,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 
-final class BaseController extends Controller
+class BaseController extends Controller
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
@@ -54,6 +54,13 @@ final class BaseController extends Controller
 
     protected function respondWithSuccess(array|JsonResource $data = []): JsonResponse
     {
+        return $this->respond($data);
+    }
+
+    protected function respondCreated(array|JsonResource $data = []): JsonResponse
+    {
+        $this->setStatusCode(Response::HTTP_CREATED);
+
         return $this->respond($data);
     }
 
