@@ -66,7 +66,9 @@ class BaseController extends Controller
 
     protected function respondNoContent(): JsonResponse
     {
-        return response()->json(null, Response::HTTP_NO_CONTENT);
+        $this->setStatusCode(Response::HTTP_NO_CONTENT);
+
+        return $this->respond();
     }
 
     protected function respondWithError(?string $message = 'Something went wrong', array $errors = []): JsonResponse

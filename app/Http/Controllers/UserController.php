@@ -13,10 +13,10 @@ use Illuminate\Http\Request;
 
 final class UserController extends BaseController
 {
-    public function store(UserStoreDto $request, CreateUserService $service): JsonResponse
+    public function store(UserStoreDto $data, CreateUserService $service): JsonResponse
     {
         try {
-            $user = $service->handle($request);
+            $user = $service->handle($data);
 
             return $this->respondCreated(new UserResource($user));
         } catch (Exception $e) {

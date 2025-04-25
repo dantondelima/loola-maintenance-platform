@@ -14,7 +14,7 @@ final class UserStoreDto extends Data
         public string $name,
         public string $email,
         public string $password,
-        public string $role
+        public UserRoleEnum $role
     ) {}
 
     public static function rules(): array
@@ -23,7 +23,7 @@ final class UserStoreDto extends Data
             'name' => ['required', 'string'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8'],
-            'role' => ['required', Rule::in(UserRoleEnum::cases())],
+            'role' => ['required', Rule::enum(UserRoleEnum::class)],
         ];
     }
 }
