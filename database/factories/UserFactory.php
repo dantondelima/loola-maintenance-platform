@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use App\Enums\UserRoleEnum;
-use Illuminate\Support\Str;
 use App\States\User\Created;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 final class UserFactory extends Factory
 {
