@@ -8,6 +8,7 @@ use App\Enums\UserRoleEnum;
 use App\States\User\UserState;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -15,7 +16,7 @@ use Spatie\ModelStates\HasStates;
 
 final class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasStates, HasUlids, Notifiable;
+    use HasApiTokens, HasStates, HasUlids, Notifiable, HasFactory;
 
     protected $fillable = [
         'name',
