@@ -13,13 +13,13 @@ if [ "$APP_ENV" = "local" ]; then
     if [ ! -f "./vendor/autoload.php" ]; then
         echo "📦 Running composer install (local development)..."
         composer install
+
+        echo "🔑 Running artisan key:generate (local development)..."
+        php artisan key:generate
+
+        echo "🎯 Running database migrations and seeds (local development)..."
+        php artisan migrate
     fi
-
-    echo "🔑 Running artisan key:generate (local development)..."
-    php artisan key:generate
-
-    echo "🎯 Running database migrations and seeds (local development)..."
-    php artisan migrate --seed
 else
     # In production environment
     echo "Caching Laravel config and routes (production)..."

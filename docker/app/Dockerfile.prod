@@ -1,5 +1,5 @@
 # Builder
-FROM php:8.3-fpm-alpine as builder
+FROM --platform=linux/amd64 php:8.3-fpm-alpine as builder
 
 RUN apk add --no-cache \
     libzip-dev zip unzip git curl libpng-dev libxml2-dev \
@@ -26,7 +26,7 @@ COPY . .
 RUN composer dump-autoload --optimize
 
 # Runtime
-FROM php:8.3-fpm-alpine
+FROM --platform=linux/amd64 php:8.3-fpm-alpine
 
 WORKDIR /app
 
