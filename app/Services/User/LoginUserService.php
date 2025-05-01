@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services\User;
 
 use App\Dtos\Auth\AuthRequestDto;
@@ -9,7 +11,7 @@ class LoginUserService
 {
     public function handle(AuthRequestDto $data): bool
     {
-        if (!Auth::attempt($data->toArray())) {
+        if (! Auth::attempt($data->toArray())) {
             return false;
         }
 

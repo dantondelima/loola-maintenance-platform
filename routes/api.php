@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\AuthController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PingController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('ping', [PingController::class, 'ping']);
 

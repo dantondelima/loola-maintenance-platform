@@ -16,7 +16,7 @@ use Spatie\ModelStates\HasStates;
 
 final class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasStates, HasUlids, Notifiable, HasFactory;
+    use HasApiTokens, HasFactory, HasStates, HasUlids, Notifiable;
 
     protected $fillable = [
         'name',
