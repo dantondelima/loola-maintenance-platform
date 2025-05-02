@@ -16,6 +16,8 @@ services:
       - .env
     depends_on:
       - db
+    networks:
+      - loola_shared
 
   nginx:
     image: nginx:stable-alpine
@@ -26,6 +28,8 @@ services:
       - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - app
+    networks:
+      - loola_shared
 
   db:
     image: mariadb:11
@@ -36,6 +40,12 @@ services:
       - "3306:3306"
     volumes:
       - db:/var/lib/mysql
+    networks:
+      - loola_shared
+
+networks:
+  loola_shared:
+    name: loola_shared  
 
 volumes:
   db:
