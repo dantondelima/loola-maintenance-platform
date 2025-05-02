@@ -125,4 +125,7 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'throttle_limit' => [
+        'default' => env('APP_THROTTLE_LIMIT', 60),
+    ],
 ];

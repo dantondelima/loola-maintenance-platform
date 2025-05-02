@@ -6,10 +6,10 @@ namespace App\Http\Controllers;
 
 use App\Dtos\User\UserStoreDto;
 use App\Http\Resources\UserResource;
-use App\Services\CreateUserService;
-use Exception;
+use App\Services\User\CreateUserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Throwable;
 
 final class UserController extends BaseController
 {
@@ -18,25 +18,26 @@ final class UserController extends BaseController
         try {
             $user = $service->handle($data);
 
-            return $this->respondCreated(new UserResource($user));
-        } catch (Exception $e) {
+            return $this->respondCreated((new UserResource($user))->withToken());
+        } catch (Throwable $e) {
             report($e);
 
             return $this->respondWithError();
         }
     }
 
-    public function show(string $id)
+    public function me(): JsonResponse
     {
-        //
+        try {
+            return $this->respondWithSuccess((new UserResource(auth()->user())));
+        } catch (Throwable $e) {
+            report($e);
+
+            return $this->respondWithError();
+        }
     }
 
     public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    public function destroy(string $id)
     {
         //
     }
