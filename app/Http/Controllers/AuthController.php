@@ -11,7 +11,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Throwable;
 
-class AuthController extends BaseController
+final class AuthController extends BaseController
 {
     public function login(AuthRequestDto $request, LoginUserService $service): JsonResponse
     {

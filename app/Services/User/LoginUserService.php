@@ -11,10 +11,6 @@ class LoginUserService
 {
     public function handle(AuthRequestDto $data): bool
     {
-        if (! Auth::attempt($data->toArray())) {
-            return false;
-        }
-
-        return true;
+        return Auth::attempt($data->toArray());
     }
 }

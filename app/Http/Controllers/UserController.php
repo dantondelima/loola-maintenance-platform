@@ -26,7 +26,7 @@ final class UserController extends BaseController
         }
     }
 
-    public function me()
+    public function me(): JsonResponse
     {
         try {
             return $this->respondWithSuccess((new UserResource(auth()->user())));

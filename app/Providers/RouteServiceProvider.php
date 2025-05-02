@@ -12,10 +12,10 @@ class RouteServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $this->seRateLimiters();
+        $this->setRateLimiters();
     }
 
-    public function seRateLimiters(): void
+    public function setRateLimiters(): void
     {
         RateLimiter::for('api', function ($request) {
             return Limit::perMinute(config('app.throttle_limit.default'))
