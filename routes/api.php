@@ -9,10 +9,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('ping', [PingController::class, 'ping']);
 
-Route::post('users', [UserController::class, 'store'])->name('users.store');
-Route::post('users/login', [AuthController::class, 'login'])->name('users.login');
+Route::group(['middleware' => ['throttle:api']], function () {
+    Route::post('users', [UserController::class, 'store'])->name('users.store');
+    Route::post('users/login', [AuthController::class, 'login'])->name('users.login');
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('users/me', [UserController::class, 'me']);
-    Route::post('users/logout', [AuthController::class, 'logout']);
+    Route::group(['middleware' => ['auth:sanctum']], function () {
+        Route::get('users/me', [UserController::class, 'me']);
+        Route::post('users/logout', [AuthController::class, 'logout']);
+    });
 });
