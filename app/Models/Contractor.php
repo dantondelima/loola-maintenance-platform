@@ -19,7 +19,6 @@ class Contractor extends Model
         'user_id',
         'name',
         'document',
-        'type',
         'birth_date',
         'status',
     ];
@@ -27,7 +26,6 @@ class Contractor extends Model
     protected $casts = [
         'user_id' => 'ulid',
         'status' => ContractorState::class,
-        'type' => ContractorTypeEnum::class,
         'birth_date' => 'datetime',
     ];
 

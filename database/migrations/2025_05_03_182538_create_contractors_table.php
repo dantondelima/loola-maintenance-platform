@@ -14,7 +14,6 @@ return new class extends Migration
             $table->foreignUlid('user_id')->constrained();
             $table->string('name', 200)->nullable();
             $table->string('document', 20)->unique()->nullable();
-            $table->string('type', 20)->nullable();
             $table->dateTime('birth_date')->nullable();
             $table->string('status', 50)->default(Created::$name);
             $table->timestamps();
