@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use App\Enums\ContractorTypeEnum;
+use Spatie\ModelStates\HasStates;
+use Illuminate\Database\Eloquent\Model;
 use App\States\Contractor\ContractorState;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Spatie\ModelStates\HasStates;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Contractor extends Model
 {
@@ -33,4 +34,9 @@ class Contractor extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function serviceCategories(): BelongsToMany
+    {
+        return $this->belongsToMany(ServiceCategory::class, 'contractor_service_categories');
+    }
 }
