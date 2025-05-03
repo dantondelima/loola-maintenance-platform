@@ -23,6 +23,7 @@ built to simplify property maintenance through smart automation, scheduling, and
 ### 🔐 Authentication & Roles
 
 - [X]  User registration and login (Sanctum)
+- [ ]  E-mail confirmation
 - [ ]  Define and enforce roles: Admin, Manager, Contractor
 - [ ]  Role-based middleware and route protection
 
