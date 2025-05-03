@@ -16,4 +16,9 @@ class State extends Model
         'code',
         'country_id',
     ];
+
+    public function cities()
+    {
+        return $this->hasMany(City::class);
+    }
 }
