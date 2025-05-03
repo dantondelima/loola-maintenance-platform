@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Models\Country;
@@ -7,6 +9,7 @@ use App\Models\State;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use RuntimeException;
 
 class StateCitiesSeeder extends Seeder
 {
@@ -25,7 +28,7 @@ class StateCitiesSeeder extends Seeder
         $statesAndCities = json_decode($json, true);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new \RuntimeException('Invalid JSON format');
+            throw new RuntimeException('Invalid JSON format');
         }
 
         DB::transaction(function () use ($statesAndCities, $countryId) {

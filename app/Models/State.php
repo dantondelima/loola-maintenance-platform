@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 class State extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
 
     protected $table = 'states';
 
@@ -21,6 +25,4 @@ class State extends Model
     {
         return $this->hasMany(City::class);
     }
-
-    public $timestamps = false;
 }
