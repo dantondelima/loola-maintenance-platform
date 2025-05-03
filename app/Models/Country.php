@@ -15,4 +15,6 @@ class Country extends Model
         'name',
         'code',
     ];
+
+    public $timestamps = false;
 }

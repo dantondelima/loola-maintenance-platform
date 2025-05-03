@@ -21,4 +21,6 @@ class State extends Model
     {
         return $this->hasMany(City::class);
     }
+
+    public $timestamps = false;
 }
