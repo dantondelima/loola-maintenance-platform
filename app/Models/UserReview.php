@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -44,7 +46,7 @@ class UserReview extends Model
         return $this->belongsTo(User::class, 'reviewer_user_id');
     }
 
-    //@TODO: Uncomment when ServiceOrder model is created
+    // @TODO: Uncomment when ServiceOrder model is created
     public function serviceOrder()
     {
         // return $this->belongsTo(ServiceOrder::class);

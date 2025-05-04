@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
-use App\Models\User;
 use App\Models\Contractor;
+use App\Models\User;
 use App\States\Contractor\ContractorState;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

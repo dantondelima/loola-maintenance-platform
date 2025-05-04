@@ -1,15 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
-use App\Enums\ContractorTypeEnum;
-use Spatie\ModelStates\HasStates;
-use Illuminate\Database\Eloquent\Model;
 use App\States\Contractor\ContractorState;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\ModelStates\HasStates;
 
 class Contractor extends Model
 {
