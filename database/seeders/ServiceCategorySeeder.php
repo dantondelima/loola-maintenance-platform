@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Models\ServiceCategory;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class ServiceCategorySeeder extends Seeder
@@ -35,13 +35,11 @@ class ServiceCategorySeeder extends Seeder
             'Snow Removal',
         ];
 
-        DB::table('service_categories')->insert(
-            collect($categories)->map(fn ($name) => [
-                'name' => $name,
-                'slug' => Str::slug($name),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ])->toArray()
-        );
+        foreach ($categories as $category) {
+            ServiceCategory::firstOrCreate([
+                'name' => $category,
+                'slug' => Str::slug($category),
+            ]);
+        }
     }
 }

@@ -15,8 +15,8 @@ class StateCitiesSeeder extends Seeder
 {
     public function run(): void
     {
-        $brazil = Country::where('code', 'BR')->first();
-        $unitedStates = Country::where('code', 'US')->first();
+        $brazil = Country::where('code', 'BR')->firstOrFail();
+        $unitedStates = Country::where('code', 'US')->firstOrFail();
 
         $this->seedStatesAndCities(database_path('br_states_and_cities.json'), $brazil->id);
         $this->seedStatesAndCities(database_path('us_states_and_cities.json'), $unitedStates->id);
@@ -33,14 +33,16 @@ class StateCitiesSeeder extends Seeder
 
         DB::transaction(function () use ($statesAndCities, $countryId) {
             foreach ($statesAndCities as $stateData) {
-                $state = State::create([
+                $state = State::firstOrCreate([
                     'name' => $stateData['name'],
                     'code' => $stateData['code'],
                     'country_id' => $countryId,
                 ]);
 
                 $cities = array_map(fn ($city) => ['name' => $city], $stateData['cities']);
-                $state->cities()->createMany($cities);
+                foreach ($cities as $cityData) {
+                    $state->cities()->firstOrCreate(['name' => $cityData['name']]);
+                }
             }
         });
 
