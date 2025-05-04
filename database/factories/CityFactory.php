@@ -19,4 +19,11 @@ class CityFactory extends Factory
             'state_id' => State::factory(),
         ];
     }
+
+    public function setState(string $stateId): static
+    {
+        return $this->state([
+            'state_id' => $stateId,
+        ]);
+    }
 }

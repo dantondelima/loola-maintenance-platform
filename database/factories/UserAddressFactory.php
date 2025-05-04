@@ -17,9 +17,9 @@ class UserAddressFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'country_id' => Country::factory(),
-            'state_id' => State::factory(),
-            'city_id' => City::factory(),
+            'country_id' => $country = Country::factory()->create()->id,
+            'state_id' => $state = State::factory()->create(['country_id' => $country])->id,
+            'city_id' => City::factory()->create(['state_id' => $state])->id,
             'street' => $this->faker->streetAddress,
             'number' => $this->faker->buildingNumber,
             'complement' => $this->faker->secondaryAddress,

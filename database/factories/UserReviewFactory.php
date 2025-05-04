@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\User;
 use App\Models\UserReview;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UserReviewFactory extends Factory
@@ -15,7 +16,7 @@ class UserReviewFactory extends Factory
         return [
             'reviewed_user_id' => User::factory(),
             'reviewer_user_id' => User::factory(),
-            'service_order_id' => $this->faker->uuid(),
+            'service_order_id' => Str::ulid(),
             'description' => $this->faker->text(200),
             'rating' => $this->faker->numberBetween(1, 5),
             'is_done' => $this->faker->boolean(),

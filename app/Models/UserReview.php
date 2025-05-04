@@ -27,4 +27,26 @@ class UserReview extends Model
         'is_visible',
         'is_done',
     ];
+
+    protected $casts = [
+        'is_done' => 'boolean',
+        'is_visible' => 'boolean',
+        'rating' => 'integer',
+    ];
+
+    public function reviewedUser()
+    {
+        return $this->belongsTo(User::class, 'reviewed_user_id');
+    }
+
+    public function reviewer()
+    {
+        return $this->belongsTo(User::class, 'reviewer_user_id');
+    }
+
+    //@TODO: Uncomment when ServiceOrder model is created
+    public function serviceOrder()
+    {
+        // return $this->belongsTo(ServiceOrder::class);
+    }
 }

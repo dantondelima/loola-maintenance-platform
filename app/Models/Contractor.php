@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\States\Contractor\ContractorState;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Contractor extends Model
@@ -27,7 +28,9 @@ class Contractor extends Model
     protected $casts = [
         'user_id' => 'ulid',
         'status' => ContractorState::class,
-        'birth_date' => 'datetime',
+        'name' => 'encrypted',
+        'document' => 'encrypted',
+        'birth_date' => 'encrypted',
     ];
 
     protected $hidden = [
@@ -38,5 +41,10 @@ class Contractor extends Model
     public function serviceCategories(): BelongsToMany
     {
         return $this->belongsToMany(ServiceCategory::class, 'contractor_service_categories');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

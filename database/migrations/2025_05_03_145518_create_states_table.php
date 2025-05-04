@@ -15,6 +15,8 @@ return new class extends Migration
             $table->string('name', 50);
             $table->string('code', 5);
             $table->foreignId('country_id')->constrained('countries');
+
+            $table->unique(['code', 'country_id']);
         });
     }
 
