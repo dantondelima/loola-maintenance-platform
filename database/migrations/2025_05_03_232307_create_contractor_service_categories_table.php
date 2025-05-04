@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('contractor_service_categories', function (Blueprint $table) {
-            $table->foreignUlid('contractor_id')->constrained('contractors')->index();
-            $table->foreignId('service_category_id')->constrained('service_categories')->index();
+            $table->foreignUlid('contractor_id')->constrained('contractors');
+            $table->foreignId('service_category_id')->constrained('service_categories');
 
             $table->unique(['contractor_id', 'service_category_id'], 'contractor_service_categories_unique');
         });

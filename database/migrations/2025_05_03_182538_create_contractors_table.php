@@ -10,7 +10,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('contractors', function (Blueprint $table) {
-            $table->ulid()->primary();
+            $table->ulid('id')->primary();
             $table->foreignUlid('user_id')->constrained();
             $table->string('name', 200)->nullable();
             $table->string('document', 20)->unique()->nullable();

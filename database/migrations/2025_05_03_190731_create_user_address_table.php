@@ -11,9 +11,9 @@ return new class extends Migration
         Schema::create('user_address', function (Blueprint $table) {
             $table->id();
             $table->foreignUlid('user_id')->constrained();
-            $table->foreignId('country_id')->constrained('countries')->index();
-            $table->foreignId('state_id')->constrained('states')->index();
-            $table->foreignId('city_id')->constrained('cities')->index();
+            $table->foreignId('country_id')->constrained('countries');
+            $table->foreignId('state_id')->constrained('states');
+            $table->foreignId('city_id')->constrained('cities');
             $table->string('street', 255);
             $table->string('number', 20)->nullable();
             $table->string('complement', 255)->nullable();

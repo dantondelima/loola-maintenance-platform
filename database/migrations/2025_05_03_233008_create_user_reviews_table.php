@@ -12,9 +12,9 @@ return new class extends Migration
         
         // Schema::create('user_reviews', function (Blueprint $table) {
         //     $table->id();
-        //     $table->foreignUlid('reviewed_user_id')->constrained('users')->index();
-        //     $table->foreignUlid('reviewer_user_id')->constrained('users')->index();
-        //     $table->foreignUlid('service_order_id')->constrained('service_orders')->index();
+        //     $table->foreignUlid('reviewed_user_id')->constrained('users');
+        //     $table->foreignUlid('reviewer_user_id')->constrained('users');
+        //     $table->foreignUlid('service_order_id')->constrained('service_orders');
         //     $table->text('description');
         //     $table->unsignedTinyInteger('rating');
         //     $table->boolean('is_done')->default(false)->index();

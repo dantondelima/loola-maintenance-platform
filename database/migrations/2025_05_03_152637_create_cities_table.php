@@ -13,7 +13,7 @@ return new class extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
-            $table->foreignId('state_id')->constrained('states')->index();
+            $table->foreignId('state_id')->constrained('states');
         });
     }
 
