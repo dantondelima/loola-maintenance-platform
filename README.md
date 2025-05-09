@@ -33,6 +33,7 @@ built to simplify property maintenance through smart automation, scheduling, and
   - [ ]  Complete registration
   - [ ]  Validate ID ([didit.me](https://didit.me))
   - [ ]  Approval on plataform
+  - [ ]  Projects managements
 - [ ]  Manager flow
   - [ ]  Complete registration
   - [ ]  Validate email and phone
